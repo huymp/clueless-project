@@ -12,9 +12,9 @@ def serve():
   game_engine = GameEngine()
   server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
   pb2_grpc.add_CluelessServicer_to_server(CluelessService(game_engine), server)
-  server.add_insecure_port('[::]:50051')
+  server.add_insecure_port('[::]:56789')
   server.start()
-  print("gRPC server started, listening on [::]:50051")
+  print("gRPC server started, listening on [::]:56789")
   server.wait_for_termination()
 
 if __name__ == '__main__':
